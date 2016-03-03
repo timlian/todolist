@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply from: "$rootDir/gradle/gretty.plugin"
+
+repositories {
+        mavenCentral()
+}
+
+dependencies {
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+	compile 'javax.servlet:jstl:1.2'
+    compile 'javax.servlet.jsp:jsp-api:2.2'
+	compile 'mysql:mysql-connector-java:5.1.38'
+	compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+}
+
+war {
+        baseName = 'foo'
+        version = '0.1'
+}
+
+gretty {
+        port = 8080
+        contextPath = '/'
+        servletContainer = 'jetty9'
+}
+
